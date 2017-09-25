@@ -60,9 +60,7 @@ namespace ProductivityTool
 
         protected override void OnLoad(EventArgs e)
         {
-//            Visible         = false; // Hide form window.
-//            ShowInTaskbar   = false; // Remove from taskbar.
-
+            // force application to be top most...
             SetWindowPos(this.Handle, HWND_TOPMOST, 0, 0, 0, 0, TOPMOST_FLAGS);
 
             base.OnLoad(e);
@@ -76,7 +74,8 @@ namespace ProductivityTool
         private void OnShow(object sender, EventArgs e)
         {
             Visible         = true;
-            ShowInTaskbar   = true;
+            ShowInTaskbar   = false;
+            SetWindowPos(this.Handle, HWND_TOPMOST, 0, 0, 0, 0, TOPMOST_FLAGS);
         }
 
         private void OnHide(object sender, EventArgs e)
